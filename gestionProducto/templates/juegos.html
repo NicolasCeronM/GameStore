@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+
+<title>Juegos</title>
+
+{% endblock title %}
+
+
+
+{% block content %}
+
+{% load humanize %}
+
+<div class="container p-5">
+    <div class="row">
+
+        <p>Titulo de pagina de juegos</p>
+
+        <div class="col-lg-2">
+            <p>Esto sera el filtro</p>
+        </div>
+
+        <div class="col-lg-10">
+
+            <p>Esta es la pagina de los juegos</p>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            {% for i in juegos %}
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="{{i.imagen.url}}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{i.nombre}}</h5>
+                        </div>
+                        <div class="card-footer">
+                            <p class="card-text">{{i.plataforma}}</p>
+                            <span>CLP {{i.precio | intcomma}}</span>
+                        </div>
+                    </div>
+                </div>
+           
+            {% endfor %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
