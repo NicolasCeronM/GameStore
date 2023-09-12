@@ -5,25 +5,24 @@
 <title>Registro</title>
 {% endblock title %}
 
-
-
-
 {% block content %}
 
 {% load crispy_forms_tags %}
 
 <div class="container mb-5">
 
-    <form action="" class="row justify-content-center">
+    <form action="" class="row justify-content-center" method="POST">
         <div class="col-lg-6 shadow p-3">
 
-            <p class="fs-3">Registro de usuario</p>
+            <p class="fs-3">Registro de Usuario</p>
             <hr>
 
             {% csrf_token %}
             {{form | crispy}}
 
-            <input type="submit" value="Enviar" class="btn btn-success">
+            <p>Si ya tienes cuenta <a href="{% url 'login' %}">Inicia Sesion</a></p>
+
+            <input type="submit" value="Registrar" class="btn btn-success">
 
         </div>
 

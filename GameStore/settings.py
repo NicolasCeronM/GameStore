@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Application definition
 
@@ -112,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 #LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = 'ES'
+LANGUAGE_CODE = 'es-la'
 
 TIME_ZONE = 'UTC'
 
