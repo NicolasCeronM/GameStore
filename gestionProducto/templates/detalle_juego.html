@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Juego</title>
+{% endblock title %}
+
+{% load humanize %}
+
+
+{% block content %}
+{% for i in juego %}
+
+<div class="container">
+    <div class="row p-3">
+
+        <!--todo | Imagen |-->
+        <div class="col-3">
+            <img src="{{i.imagen.url}}" alt="" class="img-fluid">
+
+        </div>
+
+        <!--todo| Nombre e Informacion |-->
+        <div class="col"">
+            <p>{{i.nombre}}</p>
+
+        </div>
+
+        <!--todo | Compra |-->
+        <div class="col-lg-3">
+
+            <div>
+
+            </div>
+
+            <div>
+
+                <p>CLP {{i.precio | intcomma}}</p>
+
+            </div>
+
+            <div class="d-grid gap-2">
+                <button class="btn btn-warning" type="button">Comprar ahora</button>
+                <button class="btn btn-outline-primary" type="button"><i class="fa-solid fa-cart-shopping"></i> Añadir al carrito</button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endfor %}
+{% endblock content %}
