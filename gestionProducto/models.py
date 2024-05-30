@@ -11,6 +11,7 @@ class Plataforma(models.Model):
 class Producto(models.Model):
     nombre = models.CharField(max_length=100)
     imagen = models.ImageField(upload_to="productos",null=True)
+    trailer = models.URLField(max_length=200, null=True)
     precio = models.IntegerField()
     detalle = models.TextField()
     plataforma = models.ForeignKey(Plataforma, on_delete=models.PROTECT)

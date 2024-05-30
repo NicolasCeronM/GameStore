@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
 
 
-{% block title %}
-
-<title>Juegos</title>
-
-{% endblock title %}
+{% block title %} <title>Juegos</title> {% endblock title %}
 
 
 
 {% block content %}
 
 {% load humanize %}
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
 
 <div class="container p-5">
     <div class="row">
@@ -26,24 +28,22 @@
 
             <p>Esta es la pagina de los juegos</p>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
+            <!--CARD ORIGINAL-->
 
+            <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
                 {% for i in juegos %}
-                <a href="{% url 'detalle_juego' i.id %}">
+                <a href="{% url 'detalle_juego' i.id %}" style="text-decoration: none;">
                     <div class="col">
-                        <div class="card h-100">
-                            <img src="{{i.imagen.url}}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{i.nombre}}</h5>
-                            </div>
+                        <div class="card h-100 card-custom-size" style="background-color: #030616; color: white;">
+                            <img src="{{i.imagen.url}}" class="img-card-top" alt="...">
                             <div class="card-footer">
                                 <p class="card-text">{{i.plataforma}}</p>
-                                <span class="fw-bold fs-5">CLP {{i.precio | intcomma}}</span>
+                                <p>{{i.nombre}}</p>
+                                <span class="fw-bold fs-5">{{i.precio | intcomma}} CLP</span>
                             </div>
                         </div>
                     </div>
                 </a>
-
                 {% endfor %}
             </div>
 

@@ -3,18 +3,20 @@
 
 {% block content %}
 
+{% load static %}
+
 <div class="container">
 
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <a href="#"><img src="https://cdn-sliders.eneba.com/resized/6tdZja_OvU06zD2oaZxXXJCdCY9FGw2IUlSqRTLwRog_1500x400_1x-1500x400_150_0.jpg" class="d-block w-100" alt="..."></a>
+                <a href="#"><img src="{% static 'img/carr1.png' %}" class="d-block w-100" alt="..."></a>
             </div>
             <div class="carousel-item">
-                <img src="https://cdn-sliders.eneba.com/resized/HHRC3dixhujRmmmcT_dN-VS2LlHEtiOw6lJjM4ekB_Q_1500x400_1x-1500x400_150_0.jpg" class="d-block w-100" alt="...">
+                <img src="{% static 'img/carr2.png' %}" class="d-block w-100" alt="...">
             </div>
             <div class="carousel-item">
-                <img src="https://cdn-sliders.eneba.com/resized/R6LtqE1GaK-xF7H5BjDMcw7ACBIaTQJJZOC9_e2790s_1500x400_1x-1500x400_150_0.jpg" class="d-block w-100" alt="...">
+                <img src="{% static 'img/carr3.jpg' %}" class="d-block w-100" alt="...">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"

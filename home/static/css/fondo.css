@@ -1,0 +1,13 @@
+.fondo{
+    background: linear-gradient(to bottom, #101927, #0a3333);
+    color: white;
+}
+
+#footer{
+    background-color: #030616;
+    padding: 50px;
+}
+#heder{
+    background-color: #030616;
+
+}
