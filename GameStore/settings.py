@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'home',
     'gestionProducto',
+    'carro',
     'django.contrib.humanize',
     'crispy_forms',
     'crispy_bootstrap5',

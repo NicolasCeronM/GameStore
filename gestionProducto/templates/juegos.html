@@ -28,18 +28,22 @@
 
             <p>Esta es la pagina de los juegos</p>
 
-            <!--CARD ORIGINAL-->
+            <!--todo| CARD ORIGINAL-->
 
             <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
                 {% for i in juegos %}
                 <a href="{% url 'detalle_juego' i.id %}" style="text-decoration: none;">
                     <div class="col">
                         <div class="card h-100 card-custom-size" style="background-color: #030616; color: white;">
-                            <img src="{{i.imagen.url}}" class="img-card-top" alt="...">
+                            <img src="{{i.imagen.url}}" class="img-card-top p-3" alt="...">
+                            
                             <div class="card-footer">
                                 <p class="card-text">{{i.plataforma}}</p>
                                 <p>{{i.nombre}}</p>
-                                <span class="fw-bold fs-5">{{i.precio | intcomma}} CLP</span>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="fw-bold fs-5">{{i.precio | intcomma}} CLP</span>
+                                    <!-- <span>+<i class="fa-solid fa-cart-shopping"></i></span> -->
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,8 +51,11 @@
                 {% endfor %}
             </div>
 
+            <!--! pruebas de cards-->
+
+            
         </div>
     </div>
 </div>
 
-{% endblock content %}
+    {% endblock content %}

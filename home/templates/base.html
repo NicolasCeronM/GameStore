@@ -82,25 +82,10 @@
                     <!-- todo| Carrito -->
 
                     <div class="col">
-                        <a class="" type="button" data-bs-toggle="offcanvas" style="text-decoration: none; color: white;"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <a href="{% url 'carro:carro' %}" style="text-decoration: none; color: white;">
                             <i class="fa-solid fa-cart-shopping fa-xl"></i> Mi Carrito
                         </a>
                     </div>
-
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
-                        aria-labelledby="offcanvasRightLabel">
-                        <div class="offcanvas-header">
-                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Mi Carro</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                aria-label="Close"></button>
-                        </div>
-                        <div class="offcanvas-body">
-                            ...
-                        </div>
-                    </div>
-
-
 
                 </div>
             </div>
