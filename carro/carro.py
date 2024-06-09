@@ -18,7 +18,8 @@ class Carro:
                 'nombre':producto.nombre,
                 'precio':str(producto.precio),
                 'cantidad':1,
-                'imagen':producto.imagen.url
+                'imagen':producto.imagen.url,
+                'plataforma':producto.plataforma.id,
             }
         else:
             for key, value in self.carro.items():

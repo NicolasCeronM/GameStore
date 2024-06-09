@@ -25,13 +25,13 @@
             <p>{{i.nombre}}</p>
 
             {% if i.trailer %}
-                <iframe width=" 560" height="315" src="{{i.trailer}}
-                title="YouTube video player" frameborder="0"
+            <iframe width=" 560" height="315" src="{{i.trailer}}
+                title=" YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen>
-                </iframe>
+            </iframe>
             {% else %}
-                <p>No tiene trailer :(</p>
+            <p>No tiene trailer :(</p>
             {% endif %}
 
         </div>
@@ -51,8 +51,10 @@
 
             <div class="d-grid gap-2">
                 <button class="btn btn-warning" type="button">Comprar ahora</button>
-                <button class="btn btn-outline-primary" type="button"><i class="fa-solid fa-cart-shopping"></i> Añadir
-                    al carrito</button>
+                <a class="btn btn-outline-primary" type="button" href="{% url 'carro:agregar' i.id %}">
+                    <i class="fa-solid fa-cart-shopping"></i> 
+                    Añadir al carrito
+                </a>
             </div>
 
         </div>

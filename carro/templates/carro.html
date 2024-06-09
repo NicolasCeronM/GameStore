@@ -1,57 +1,136 @@
 {% extends 'base.html' %}
 
 
+
+
 <!--todo| CONTENIDO PRINCIPAL DE LA PAGINA-->
 {% block content %}
+
+{% load humanize %}
 
 <div class="container">
     <div class="row">
 
         <h2 class="m-3">Mi Carrito</h2>
 
-        <div class="col-lg-8 m-3" style="background-color: aqua;">
+        <div class="col-lg-8">
 
-            <H2>sona de productos de carro</H2> 
+            {% if request.session.carro.items %}
+            {% for key, value in request.session.carro.items %}
 
-            <div class="row" style="background-color: beige;">
+            <div class="row shadow rounded-5 p-3 m-2" style="background-color: #030616;">
+                <!-- style="background-color: black;" -->
 
-                <div class="col-2" style="background-color: azure;">
-                    <p>imagen</p>
-
+                <div class="col-2">
+                    <img src="{{value.imagen}}" alt="" height="" width="120px">
                 </div>
 
-                <div class="col row">
+                <div class="col-10 row">
 
-                    <div class="col-12" style="background-color: black;">
-                        <p>nombre</p>
-    
+                    <div class="col-11">
+                        <p class="fs-3">{{value.nombre}}</p>
+
                     </div>
 
-                    <div class="col-6" style="background-color: black;">
-                        <p>plataforma</p>
-    
+                    <div class="col-1">
+                        <a class="fs-4 link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            href="{% url 'carro:eliminar' value.producto_id %}"><i
+                                class="fa-regular fa-trash-can"></i></a>
+
                     </div>
 
-                    <div class="col-6" style="background-color: black;">
-                        <p>Precio</p>
-    
+                    <div class="col-12">
+                        <p>Plataforma {{value.plataforma}}</p>
+
+                    </div>
+
+                    <div class="col-6">
+                        <p>{{value.precio}} CLP</p>
+                    </div>
+
+                    <div class="col-6">
+
+                        <a href="{% url 'carro:restar' value.producto_id %}">-</a>
+                        <span>{{value.cantidad}}</span>
+
+                        <a href="{% url 'carro:agregar' value.producto_id %}">+</a>
+
                     </div>
 
                 </div>
-
-                
 
             </div>
 
-            
+            {% endfor %}
+            {% else %}
+
+            <div class="row shadow rounded-5">
+
+                <div class="col">
+
+                    <h2>Tu carrito esta vacio</h2>
+                </div>
+
+
+            </div>
+
+            {% endif %}
+
+
 
         </div>
 
-        <div class="col" style="background-color: brown;">
+        {% if request.session.carro.items %}
 
-            <h2>SONA DE RESUMEN DE COMPRAS</h2>
 
+        <div class="col m-2 p-3 rounded-5 shadow" style="background-color: #030616;">
+
+            <div class="summary-box p-2">
+
+                <div class="d-flex justify-content-between">
+                    <span>{{cantidad_carro}} productos</span>
+                    <span>{{importe_total_carro}}</span>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <span>Tarifa de servicio</span>
+                    <span>--</span>
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between total-price fs-2">
+                    <span>Total:</span>
+                    <span>{{importe_total_carro | intcomma}} CLP</span>
+                </div>
+
+                <hr>
+
+                <div class="text-center mb-3">
+                    <span>¿Tienes un código de descuento?</span>
+                </div>
+
+                <div class="review-section">
+
+                    <form class="row g-3">
+                        <div class="col-9">
+                            <label for="descuento" class="visually-hidden">xxxx-xxxx-xxxx</label>
+                            <input type="text" class="form-control" id="descuento" placeholder="xxxx-xxxx-xxxx">
+                        </div>
+                        <div class="col-3">
+                            <button type="submit" class="btn btn-primary mb-3">Aplicar</button>
+                        </div>
+                    </form>
+
+                </div>
+
+                <div class="text-center mt-5">
+                    <button class="btn btn-outline-light">Continuar con la compra</button>
+                </div>
+            </div>
         </div>
+
+        {% endif %}
     </div>
 
 </div>

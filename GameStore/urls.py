@@ -27,6 +27,7 @@ urlpatterns = [
     path('juegos/',include('gestionProducto.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('carro/', include('carro.urls')),
+    path('api/', include('API.urls')),
 ]
 
 if settings.DEBUG:

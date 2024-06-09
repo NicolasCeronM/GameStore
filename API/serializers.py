@@ -1,4 +1,4 @@
-from ..models import Producto,Plataforma
+from gestionProducto.models import Producto,Plataforma
 from rest_framework import serializers
 
 class PlataformaSerializer(serializers.ModelSerializer):
