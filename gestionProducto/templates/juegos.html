@@ -32,7 +32,7 @@
 
             <div class="row row-cols-1 row-cols-md-3 g-4 p-5">
                 {% for i in juegos %}
-                <a href="{% url 'detalle_juego' i.id %}" style="text-decoration: none;">
+                <a href="{% url 'gestion:detalle_juego' i.id %}" style="text-decoration: none;">
                     <div class="col">
                         <div class="card h-100 card-custom-size" style="background-color: #030616; color: white;">
                             <img src="{{i.imagen.url}}" class="img-card-top p-3" alt="...">

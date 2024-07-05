@@ -2,12 +2,26 @@ from django.shortcuts import render, redirect
 from . forms import CustomUserCreationForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from gestionProducto.models import Producto
+from django.db.models import Q
 # Create your views here.
 
 
 def home (request):
 
+    #Seccion de buscador
+
+    queryset = request.GET.get('buscador')
+    print(queryset)
+
+    if queryset:
+        
+        respuesta = Producto.objects.filter(
+            Q(nombre__icontains = queryset)
+        ).distinct()
+
     return render(request,'home.html')
+
 
 def registro(request):
 

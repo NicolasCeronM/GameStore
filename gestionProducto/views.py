@@ -1,11 +1,24 @@
 from django.shortcuts import render
 from . models import Producto
+from django.db.models import Q
 
 # Create your views here.
 
 def juegos (request):
 
     juegos = Producto.objects.all()
+
+    queryset = request.GET.get('buscador')
+
+    if queryset:
+        
+        juegos = Producto.objects.filter(
+
+            Q(nombre__icontains = queryset) 
+
+        ).distinct()
+
+        
 
     data={
         'juegos':juegos
