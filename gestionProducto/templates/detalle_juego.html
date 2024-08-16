@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 
 {% block title %}
 <title>Juego</title>
@@ -12,6 +14,7 @@
 {% for i in juego %}
 
 <div class="container">
+
     <div class="row p-3">
 
         <!--todo | Imagen |-->
@@ -20,45 +23,87 @@
         </div>
 
         <!--todo| Nombre e Informacion |-->
-        <div class="col text-center">
+        <div class="col-lg-6 text-center ">
 
-            <p>{{i.nombre}}</p>
+            <p class="fs-3 fw-bold text mt-2">{{i.nombre}}</p>
 
-            {% if i.trailer %}
-            <iframe width=" 560" height="315" src="{{i.trailer}}
-                title=" YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen>
-            </iframe>
-            {% else %}
-            <p>No tiene trailer :(</p>
-            {% endif %}
+            <hr>
+
+            <div class="row mt-5 text-start">
+
+                <div class="col">
+                    <p>Este producto es de {{i.plataforma}}</p>
+                </div>
+
+                <div class="col">
+                    <span class="fw-bold">{{i.plataforma}}</span><br>
+                    <span class="opacity-75" style="font-size: small;">Se activa en <a href="#">{{i.plataforma}}</a></span><br>
+                    <span class="opacity-75" style="font-size: small;">Consulta la guia de <a href="#">Activacion</a></span>
+                </div>
+
+                <div class="col ">
+                    <span class="fw-bold">Código Digital</span><br>
+                    <span class="opacity-75" style="font-size: small;">Esta es una edición digital del producto (CD-KEY)</span>
+                </div>
+
+            </div>
+
+            <hr>
 
         </div>
+
 
         <!--todo | Compra |-->
         <div class="col-lg-3 shadow">
 
             <div>
 
-            </div>
-
-            <div>
-
-                <p>CLP {{i.precio | intcomma}}</p>
+                <p class="fs-2 text">{{i.precio | intcomma}} CLP</p>
 
             </div>
 
             <div class="d-grid gap-2">
                 <button class="btn btn-warning" type="button">Comprar ahora</button>
-                <a class="btn btn-outline-primary" type="button" href="{% url 'carro:agregar' i.id %}">
-                    <i class="fa-solid fa-cart-shopping"></i> 
+                <button class="btn btn-outline-primary"  onclick="agregarAlCarro({{ i.id }})">
+                    <i class="fa-solid fa-cart-shopping"></i>
                     Añadir al carrito
-                </a>
+                </button>
             </div>
 
         </div>
 
+    </div>
+
+    <!--todo| Sona de fotos-->
+    <div class="row shadow mt-3">
+
+        <div class="col-lg-2">
+            {% if i.trailer %}
+            <div class="ratio ratio-16x9">
+                <iframe width="560" height="315" src="{{i.trailer}}
+                title=" YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen>
+                </iframe>
+            </div>
+            {% else %}
+            <p>No tiene trailer :(</p>
+            {% endif %}
+
+        </div>
+
+        {% for m in i.imagenes.all %}
+        <div class="col-lg-2">
+            <img src="{{m.imagen.url}}" class="img-fluid" alt="Imagen de producto">
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!--todo| Sona de Descripcion-->
+    <div class="row shadow mt-3">
+        <h3>Detalles del producto</h3>
+        <p>{{i.detalle}}</p>
     </div>
 
 </div>
@@ -66,3 +111,32 @@
 
 {% endfor %}
 {% endblock content %}
+
+
+{% block js %}
+
+<script >
+    function agregarAlCarro(productoId) {
+    $.ajax({
+        url: "{% url 'carro:agregar' producto_id=0 %}".replace('0', productoId),
+        type: 'GET',
+        success: function(response) {
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Agregado al carro",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        },
+        error: function(error) {
+            alert("Hubo un error al agregar el producto al carro.");
+        }
+    });
+}
+</script>
+    
+{% endblock js %}
+
+
+    

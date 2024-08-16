@@ -15,14 +15,8 @@ def agregar_producto(request,producto_id):
 
     carro = Carro(request)
     producto = Producto.objects.get(id=producto_id)
-    #descuentos = Descuento.objects.all()
-
-    # for descuento in descuentos:
-    #     if producto == descuento.producto:
-    #         producto.precio = round(producto.precio - (producto.precio * descuento.pct) / 100)
             
     carro.agregar(producto = producto)
-
 
     return redirect("carro:carro")
 

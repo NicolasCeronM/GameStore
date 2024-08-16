@@ -29,8 +29,8 @@ def detalle_juego(request,producto_id):
 
     juego = Producto.objects.filter(id=producto_id)
 
-
     data ={
         'juego':juego
     }
+    
     return render(request,'detalle_juego.html', data)

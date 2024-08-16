@@ -40,7 +40,7 @@ def registro(request):
             login(request,user)
             #Redirigir al home
             messages.success(request,'Registrado correctamente')
-            return redirect(to='home')
+            return redirect(to='home:home')
         data["form"] = formulario
 
 

@@ -24,4 +24,3 @@ def cantidad_carro(request):
     pass
 
   return {'cantidad_carro': cantidad}
-
