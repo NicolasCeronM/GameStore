@@ -3,6 +3,8 @@
 <!--todo| CONTENIDO PRINCIPAL DE LA PAGINA-->
 {% block content %}
 
+{% load static %}
+
 {% load humanize %}
 
 <div class="container">
@@ -30,9 +32,9 @@
                     </div>
 
                     <div class="col-1">
-                        <a class="fs-4 link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-                            href="{% url 'carro:eliminar' value.producto_id %}"><i
-                                class="fa-regular fa-trash-can"></i></a>
+                        <button class="fs-4 link-light link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                            onclick="eliminarCarro({{value.producto_id}})"><i
+                                class="fa-regular fa-trash-can"></i></button>
 
                     </div>
 
@@ -134,3 +136,11 @@
 
 
 {% endblock content %}
+
+
+{% block js %}
+
+<script src="{% static 'js/carro.js' %}"></script>
+    
+{% endblock js %}
+    

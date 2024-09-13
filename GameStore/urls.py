@@ -28,6 +28,8 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('carro/', include('carro.urls')),
     path('api/', include('API.urls')),
+    path('user_profile/', include('user_profile.urls')),
+
 ]
 
 if settings.DEBUG:

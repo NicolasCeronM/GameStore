@@ -58,7 +58,7 @@
                             <i class="fa-solid fa-user fa-xl"></i> {{request.user.first_name | capfirst}}
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Ajustes</a></li>
+                            <li><a class="dropdown-item" href="{% url 'user_profile:user_profile' %}">Mi perfil</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                             <li>
